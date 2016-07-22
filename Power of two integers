@@ -1,0 +1,21 @@
+int isPower(int A) {
+    if(A==1){
+        return 1;
+    }
+    int i;
+    
+    for(i=2;i<=sqrt(A);i++){
+        int j=2;
+        int p = pow(i,j);
+        while(p<=A && p>0){
+            if(p==A){
+                return 1;
+            }
+            else{
+                j++;
+                p=pow(i,j);
+            }
+        }
+    }
+    return 0;
+}
