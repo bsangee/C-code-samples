@@ -1,0 +1,63 @@
+/**
+ * @input A : Read only ( DON'T MODIFY ) Integer array
+ * @input n1 : Integer array's ( A ) length
+ * @input B : Read only ( DON'T MODIFY ) Integer array
+ * @input n2 : Integer array's ( B ) length
+ * 
+ * @Output Integer array. You need to malloc memory, and fill the length in len1
+ */
+int* intersect(const int* A, int n1, const int* B, int n2, int *len1) {
+    
+    int i=0,j=0,k=0;
+    
+    *len1 = n1 > n2 ? n2 : n1 ; 
+    
+    int *C = (int *) malloc (sizeof(int)*(*len1));
+    
+    while(i<n1){
+        //printf("A %d B %d ",A[i],B[j]);
+       if(A[i] < B[j]){
+           if(i<n1){
+           i++;
+           }
+           else{
+               break;
+           }
+       }
+       else if(A[i] > B[j]){
+           if(j<n2){
+            j++;
+           }
+           else{
+               break;
+           }
+       }
+       else if(A[i] == B[j]){
+           C[k] = A[i];
+           if(j<n2){
+                j++;
+           }
+           else{
+               break;
+           }
+           
+           k++;
+           if(i<n1){
+                i++;
+           }
+           else{
+               break;
+           }
+       }
+    }
+    
+    
+    
+    
+    
+    
+    
+    *len1 = k;
+    
+    return C;
+}
