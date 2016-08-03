@@ -1,0 +1,41 @@
+/**
+ * @input haystack : Read only ( DON'T MODIFY ) String termination by '\0'
+ * @input needle : Read only ( DON'T MODIFY ) String termination by '\0'
+ * 
+ * @Output Integer
+ */
+int strStr(const char* haystack, const char* needle) {
+    int len_haystack = strlen(haystack);
+    int len_needle = strlen(needle);
+    
+    int i=0,j=0,flag=0;
+    if (len_haystack < len_needle) return -1;
+    if (len_haystack == 0 || len_needle == 0 ) return -1;
+   
+    for(i=0;i<len_haystack;i++){
+        int temp;
+       
+       temp=i;
+        while(haystack[i] == needle[j] && j<len_needle){
+          
+          
+            i++;
+            j++;
+            flag=1;
+        }
+        if(j == len_needle) {
+          
+            return (i-len_needle);
+        }
+        if(flag==1)
+        {
+         
+            i=temp++;//Because the loop will increment again.
+            j=0;
+            flag=0;
+        }
+        
+         
+    }
+    return -1;
+}
