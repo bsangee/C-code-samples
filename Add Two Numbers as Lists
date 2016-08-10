@@ -1,0 +1,83 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ * 
+ * typedef struct ListNode listnode;
+ * 
+ * listnode* listnode_new(int val) {
+ *     listnode* node = (listnode *) malloc(sizeof(listnode));
+ *     node->val = val;
+ *     node->next = NULL;
+ *     return node;
+ * }
+ */
+/**
+ * @input A : Head pointer of linked list 
+ * @input B : Head pointer of linked list 
+ * 
+ * @Output head pointer of list.
+ */
+listnode* addTwoNumbers(listnode* A, listnode* B) {
+    int carry=0, val=0;
+    listnode *result_head, *C;
+    int flag=0;
+    while(A || B){
+        if(A && B){ 
+            
+            val =  (A->val + B->val + carry) % 10 ;
+            carry   =  (A->val + B->val + carry) / 10 ;
+            if(flag == 1){
+                C->next = listnode_new(val);
+                C = C->next;
+            }
+            
+            if(flag == 0){
+                flag =1;
+                C = listnode_new(val);
+                result_head = C;
+            }
+            
+            
+    
+        A = A->next;
+        B = B->next;
+        }
+        else if(A){
+            val = (A->val + carry) % 10;
+            carry   = (A->val  + carry) / 10;
+            if(flag ==1){
+                C->next = listnode_new(val);
+                C = C->next;
+            }
+         
+            A = A->next;
+        }
+        else if(B){
+            val = (B->val + carry) % 10;
+            carry   = (B->val + carry) / 10;
+            if(flag ==1){
+                C->next = listnode_new(val);
+                C = C->next;
+            }
+           
+            B = B->next;
+        }
+        else{
+            
+            break;
+        }
+    }
+             
+                
+    if(carry){
+      if(flag ==1){
+        C->next = listnode_new(carry);
+        C = C->next;
+      } 
+    }
+
+    return result_head;
+}
