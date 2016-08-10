@@ -27,9 +27,9 @@ listnode* deleteDuplicates(listnode* A) {
             A->next = A->next->next;
         }
         else{
-        if(A->next != NULL){    
-        A = A->next;
-        }
+            if(A->next != NULL){    
+             A = A->next;
+             }
         }
     }
     return temp;
